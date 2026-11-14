@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip to Japan | Log In</title>
+    <meta name="description" content="Log in to your Trip to Japan account.">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+</head>
+<body class="grid-container">
+
+    <header class="main-header">
+        <nav class="navbar navbar-expand-xl navbar-dark site-navbar">
+            <div class="container-fluid px-0">
+                <a class="navbar-brand" href="index.html">
+                    <span class="logo-badge">富士</span>
+                    <span>Trip to Japan</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+                    <ul class="navbar-nav align-items-xl-center gap-xl-1 mt-3 mt-xl-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tours.html">Tours</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="guide.html">Travel Guide</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link nav-auth active" id="authLink" href="login.html">Log In</a></li>
+                        <li class="nav-item d-flex align-items-center"><button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch between light and dark mode"><span class="theme-icon">🌙</span><span class="theme-label">Dark</span></button></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="sidebar p-3 p-lg-4">
+        <h3>Your Account</h3>
+        <ul class="benefit-list">
+            <li><span class="benefit-icon">👤</span> View your profile details</li>
+            <li><span class="benefit-icon">♥</span> See your saved tours</li>
+            <li><span class="benefit-icon">🗓</span> Track your booking requests</li>
+        </ul>
+
+        <div class="sidebar-card p-3 mt-4">
+            <h4>New here?</h4>
+            <p>Create a free account in less than a minute.</p>
+            <a href="signup.html" class="btn btn-primary btn-sm w-100 mt-2">Sign Up</a>
+        </div>
+    </aside>
+
+    <main class="main-content p-3 p-md-4 p-lg-5">
+        <div class="auth-layout">
+            <div class="auth-visual auth-visual-login">
+                <div class="auth-visual-text">
+                    <h2>Welcome back, traveller</h2>
+                    <p>Log in to continue planning your trip across Japan.</p>
+                </div>
+            </div>
+
+            <!-- Log In form: credentials are checked against users saved in localStorage -->
+            <div class="form-card auth-card p-3 p-md-4">
+                <img src="images/icons/shield.svg" class="auth-icon" alt="" width="48" height="48">
+                <h1 class="auth-title">Log In</h1>
+                <p class="auth-subtitle">Enter the email and password you used to sign up.</p>
+
+                <!-- Shown when the user is already logged in -->
+                <div class="form-success d-none" id="loginNotice"></div>
+                <div class="form-error d-none" id="loginFormError" role="alert"></div>
+
+                <form id="loginForm" novalidate>
+                    <div class="mb-2">
+                        <label for="loginEmail" class="form-label">Email Address</label>
+                        <input type="text" class="form-control" id="loginEmail" placeholder="name@example.com" autocomplete="email" inputmode="email">
+                        <small class="error-text" id="loginEmailError"></small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Your password" autocomplete="current-password">
+                            <button type="button" class="btn pw-toggle" data-toggle-target="#loginPassword" aria-label="Show password">Show</button>
+                        </div>
+                        <small class="error-text" id="loginPasswordError"></small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100" id="loginBtn">Log In</button>
+                </form>
+
+                <p class="auth-switch">Don't have an account? <a href="signup.html">Sign up</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <nav class="footer-links" aria-label="Footer">
+            <a href="tours.html">Tours</a>
+            <a href="guide.html">Travel Guide</a>
+            <a href="about.html#faq">FAQ</a>
+            <a href="contact.html">Contact</a>
+            <a href="profile.html">My Profile</a>
+        </nav>
+        <p>© 2026 Trip to Japan | Team: Maqsat Nauanuly &amp; Tolendi Arsen | Astana IT University</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

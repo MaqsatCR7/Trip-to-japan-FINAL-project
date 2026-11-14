@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip to Japan | My Profile</title>
+    <meta name="description" content="Your Trip to Japan profile, saved tours and bookings.">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+</head>
+<body class="grid-container">
+
+    <header class="main-header">
+        <nav class="navbar navbar-expand-xl navbar-dark site-navbar">
+            <div class="container-fluid px-0">
+                <a class="navbar-brand" href="index.html">
+                    <span class="logo-badge">富士</span>
+                    <span>Trip to Japan</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+                    <ul class="navbar-nav align-items-xl-center gap-xl-1 mt-3 mt-xl-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tours.html">Tours</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="guide.html">Travel Guide</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link nav-auth active" id="authLink" href="login.html">Log In</a></li>
+                        <li class="nav-item d-flex align-items-center"><button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch between light and dark mode"><span class="theme-icon">🌙</span><span class="theme-label">Dark</span></button></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="sidebar p-3 p-lg-4">
+        <h3>My Account</h3>
+        <ul>
+            <li><a href="#details">Account Details</a></li>
+            <li><a href="#saved">Saved Tours</a></li>
+            <li><a href="#bookings">My Bookings</a></li>
+        </ul>
+
+        <div class="sidebar-card p-3 mt-4">
+            <h4>Plan Your Next Trip</h4>
+            <p>Check the live weather and yen exchange rate before you book.</p>
+            <a href="guide.html" class="btn btn-primary btn-sm w-100 mt-2">Open Travel Guide</a>
+            <a href="contact.html" class="btn btn-outline-light btn-sm w-100 mt-2">Book a Tour</a>
+        </div>
+    </aside>
+
+    <main class="main-content p-3 p-md-4 p-lg-5">
+
+        <!-- Shown when nobody is logged in -->
+        <div id="profileGuest" class="form-card guest-card p-4 p-lg-5 text-center d-none">
+            <img src="images/icons/user.svg" alt="" width="80" height="80" class="mb-3">
+            <h1 class="auth-title">You are not logged in</h1>
+            <p class="auth-subtitle">Log in or create an account to see your profile, saved tours and bookings.</p>
+            <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+                <a href="login.html" class="btn btn-primary px-4">Log In</a>
+                <a href="signup.html" class="btn btn-outline-primary px-4">Sign Up</a>
+            </div>
+        </div>
+
+        <!-- Shown for the logged-in user, filled by js/script.js -->
+        <div id="profileContent" class="d-none">
+            <section class="profile-hero p-4 mb-4">
+                <div class="profile-avatar" id="profileAvatar" aria-hidden="true">?</div>
+                <div class="profile-hero-text">
+                    <p class="profile-greeting">おかえり · Welcome back</p>
+                    <h1 id="profileName">Traveller</h1>
+                    <p id="profileSince"></p>
+                </div>
+                <button type="button" class="btn btn-light logout-btn" id="logoutBtn">Log Out</button>
+            </section>
+
+            <div class="profile-stats mb-4">
+                <div class="stat-box">
+                    <span class="stat-number" id="statSaved">0</span>
+                    <span class="stat-label">Saved Tours</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="statBookings">0</span>
+                    <span class="stat-label">Bookings</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="statRatings">0</span>
+                    <span class="stat-label">Tours Rated</span>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-4 mb-lg-5" id="details">
+                <div class="col-12 col-lg-6">
+                    <div class="theme-card p-4 h-100">
+                        <h3 class="mb-3">Account Details</h3>
+                        <dl class="profile-details">
+                            <dt>Full name</dt><dd id="detailName">—</dd>
+                            <dt>Email</dt><dd id="detailEmail">—</dd>
+                            <dt>Phone</dt><dd id="detailPhone">—</dd>
+                            <dt>Member since</dt><dd id="detailSince">—</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="form-card p-4 h-100">
+                        <h3 class="mb-3">Edit Profile</h3>
+                        <form id="editProfileForm" novalidate>
+                            <div class="mb-2">
+                                <label for="editName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="editName" autocomplete="name">
+                                <small class="error-text" id="editNameError"></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editPhone" class="form-label">Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">+7</span>
+                                    <input type="tel" class="form-control" id="editPhone" autocomplete="tel-national">
+                                </div>
+                                <small class="error-text" id="editPhoneError"></small>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="editProfileBtn">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <section id="saved" class="mb-4 mb-lg-5">
+                <div class="section-header mb-3">
+                    <h2>Saved Tours</h2>
+                    <p>Tours you marked with ♥ on the Tours page.</p>
+                </div>
+                <div class="row g-4" id="savedTours"></div>
+                <p class="empty-state d-none" id="savedEmpty">You have no saved tours yet. <a href="tours.html">Browse tours</a> and press ♡ to save one.</p>
+            </section>
+
+            <section id="bookings" class="mb-4 mb-lg-5">
+                <div class="section-header mb-3">
+                    <h2>My Bookings</h2>
+                    <p>Booking requests you sent from the Contact page.</p>
+                </div>
+                <div class="booking-list" id="bookingList"></div>
+                <p class="empty-state d-none" id="bookingsEmpty">No bookings yet. <a href="contact.html">Book your first tour</a>.</p>
+            </section>
+
+            <div class="danger-zone p-3 p-lg-4">
+                <div>
+                    <h3>Delete Account</h3>
+                    <p>This removes your account, saved tours and bookings from this browser.</p>
+                </div>
+                <button type="button" class="btn btn-outline-danger" id="deleteAccountBtn">Delete Account</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <nav class="footer-links" aria-label="Footer">
+            <a href="tours.html">Tours</a>
+            <a href="guide.html">Travel Guide</a>
+            <a href="about.html#faq">FAQ</a>
+            <a href="contact.html">Contact</a>
+            <a href="profile.html">My Profile</a>
+        </nav>
+        <p>© 2026 Trip to Japan | Team: Maqsat Nauanuly &amp; Tolendi Arsen | Astana IT University</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
